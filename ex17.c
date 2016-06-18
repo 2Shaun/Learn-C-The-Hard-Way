@@ -46,15 +46,20 @@ void Address_print(struct Address *addr)
 
 void Database_load(struct Connection *conn)
 {
+	// size_t fread(void *ptr, size_t size, size_t nmemb, FILE *stream);
+	// sizeof(struct Database) * 1 from conn->file to conn->db
 	int rc = fread(conn->db, sizeof(struct Database), 1, conn->file);
+	// rc returns the number of items read or written
 	if(rc != 1) die("Failed to load database.");
 }
 
 struct Connection *Database_open(const char *filename, char mode)
 {
+	// pointer to struct
   	struct Connection *conn = malloc(sizeof(struct Connection));
   	if(!conn) die("Memory error");
 
+	// dereference conn and reserve space for pointer to struct database
   	conn->db = malloc(sizeof(struct Database));
   	if(!conn->db) die("Memory error");
 
