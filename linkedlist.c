@@ -43,13 +43,22 @@ void List_destroy(struct List *list)
 
 void print(struct List *list)
 {
-	while(list->head->next != 0)
-		printf("%d\n", list->head->data);
+	struct Node *conductor = malloc(sizeof(*conductor));
+	conductor = list->head;
+	do{
+		printf("%d\n", conductor->data);
+		conductor = conductor->next;
+	}while(conductor->next != 0);
 }
 
 int main()
 {
 	struct List *newList = list_create(3);
+	node_create(4);
+	node_create(5);
+	node_create(6);
+
 	print(newList);
+
 	return 0;
 }

@@ -26,6 +26,7 @@ int main()
 	int **pp;
 	// int triple pointer
 	int ***ppp;
+	int *ptr = p;
 	int x;
 
 	x = 8;
@@ -33,9 +34,10 @@ int main()
 	pp = &p;
 	ppp = &pp;
 
-	printf("%d\n", *p);
-	printf("%d\n", **pp);
-	printf("%d\n", ***ppp);
+	printf("*p: %d\n", *p);
+	//printf("ptr: %d\n", ptr);
+	printf("**pp: %d\n", **pp);
+	printf("***ppp: %d\n", ***ppp);
 
 	// Named PointerStruct because it's a Structure of Pointers
 	struct pointers testPointerStructs;
@@ -56,7 +58,7 @@ int main()
 		
 	struct pointersToPointersToStructs testStructPointerPointers;
 	testStructPointerPointers.ptpts = &testStructPointers;
-	printf("%d\n", *(*(*testStructPointersPointers.ptpts.)pts.)pt);
+//	printf("%d\n", *(*(*testStructPointersPointers.ptpts.)pts.)pt);
 	printf("%d\n", *(*(*testStructPointerPointers.ptpts).pts).pt);
 	
 	return 0;
